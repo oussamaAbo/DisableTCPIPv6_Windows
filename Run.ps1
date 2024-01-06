@@ -22,12 +22,10 @@ if ($existingValue -eq $null) {
     try {
         New-Item -Path $regKeyPath -Force | Out-Null
         Set-ItemProperty -Path $regKeyPath -Name $regValueName -Value $regValueData -Type DWORD
-        Write-Host "Registry key updated successfully."
+        Write-Host "Registry key successfully updated. Must restart computer to take effect"
     } catch {
         Write-Host "Error updating the registry key: $_"
     }
-#Machine Restart
-Restart-Computer -Force
 
 } else {
     # Registry value already exists, display a message
